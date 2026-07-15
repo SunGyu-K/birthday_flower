@@ -1,62 +1,88 @@
-/* 시작레이아웃요소 가운데 배치하는 법 3개 */
-/* 1. text-alien */
-/* 2. margin */
-/* 3. flex */
 body{
-    /* display:flex; justify-content:center; */
-    /* text-align:center; */
-    /* text-align은 인라인인 자식, 자손에게만 적용가능(안된 이유는 main이 블록이기때문) */
+    margin:0;
 }
-main {
-    /* display:inline-black; */
+main{
     margin:0 auto;
-    background-image:url(../images/bg.jpg);
-    width:402px; min-height:874px;
-    background-size:100% auto; /* w h (px or % or auto*/ 
-    background-position:100% center; /* x y (px or % or 방향*/
+    width:402px;
+    min-height:874px;
+
+    background-image:url("../images/bg.jpg");
+    background-size:cover;
+    background-position:center;
 }
-main .title {
-    text-align: center;
-    padding:120px;
+main .title{
+    text-align:center;
+    padding-top:120px;
     margin-bottom:198px;
 }
-main .title p {
-    font-size:0.75em;
-    letter-spacing: -0.02em;
+main .title p{
+    font-size:12px;
+    letter-spacing:-0.02em;
 }
-main .title h1 {
-    font-size: 1.5em;
+main.title h1{
+    font-size:24px;
     font-weight:600;
-    letter-spacing: -0.02em;
-    margin-bottom:8px; 
+    margin-top:8px;
 }
-main .contents {
+main .contents{
     display:flex;
-    flex-flow:column nowrap;
-    /*column(메인축-수직) nowrap(메인축 방향으로 줄바꿈안함)*/
-    align-items: center;
-    /* 메인축 (수직)의 반대 교차축(수평)이 1줄일때 가운데 정렬 */
-    gap:6px;
-    /* 플렉스 설정 시 자식 사이 간격(자식에 주는 margin과 효과 동일 */
-    /* 플렉스를 설정한 부모의 자식이 인라인일 경우, 자식의 자동으로 블록으로 인식된다. */
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
 }
-main .contents > * {
-    width:300px; height:42px;
-    border-radius:8px; letter-spacing:-0.02em;
+main .contents input,
+main .contents button{
+    width:300px;
+    height:42px;
+    border-radius:8px;
 }
-main .contents #user_brithday{/* input태그 입력 전 상태 */
-    border: 1px solid #000;
-    font-size:0.875em;
-    color:#000;; /* 사용자가 입력했을 때 글자색상 */
+main .contents #user_birthday{
+    border:1px solid #000;
     text-align:center;
 }
-/* input태그의 placeholder(안내문) 전용 선택자 글자색상 */
-main .contents #user_brithday::placeholder {color:rgba(0,0,0,0,4);}
-/* input태그가 활성화되었을 때(커서가 들어오고 입력되는 상황) */
-main .contents #user_brithday:focus {border-color:#F00;} /* :이 하나만 들어가는 이유는 focus를 사용했기때문 */
-/* 버튼 */
-main .contents #birthdayresult_btn{
-    background-color: #242424;
-    color:#fff;
-    font-weight:600;
+main .contents #user_birthday:focus{
+    outline:none;
+    border:1px solid red;
+}
+main .contents #open_btn{
+    border:none;
+    background:#222222;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+main #overlay{
+    position:fixed;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:rgba(0,0,0,.6);
+    z-index:1000;
+}
+main .hidden{
+    display:none !important;
+}
+main #content{
+    width:320px;
+    padding:40px;
+
+    text-align:center;
+
+    border-radius:25px;
+    background:rgba(255,255,255,.92);
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+main .subtitle{
+    font-size:18px;
+    font-weight:bold;
+}
+main .flower{
+    margin:20px 0;
+}
+
+main #overlay .result{
+    font-size:16px;
+    line-height:1.6;
 }
